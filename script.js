@@ -14,19 +14,19 @@ function btnEncriptar(){
         mensaje.style.backgroundImage = "none";
 }
 
-function encriptar(stringDesencriptada) {
+function encriptar(stringEncriptada) {
     let matrizCodigo = [["e", "enter"], ["i", "imes"], ["a", "ai"], ["o", "ober"], ["u", "ufat"]];
-    stringDesencriptada = stringDesencriptada.toLowerCase();
+    stringEncriptada = stringEncriptada.toLowerCase();
     // Validar que solo se utilicen letras minúsculas
-    if (!/^[a-z]+$/.test(stringDesencriptada)) {
+    if (!/^[a-z]+$/.test(stringEncriptada)) {
         return "Solo se permiten letras minúsculas sin caracteres especiales.";
     }
     for (let i = 0; i < matrizCodigo.length; i++) {
-        if (stringDesencriptada.includes(matrizCodigo[i][0])) {
-            stringDesencriptada = stringDesencriptada.replaceAll(matrizCodigo[i][0], matrizCodigo[i][1]);
+        if (stringEncriptada.includes(matrizCodigo[i][0])) {
+            stringEncriptada = stringEncriptada.replaceAll(matrizCodigo[i][0], matrizCodigo[i][1]);
         }
     }
-    return stringDesencriptada;
+    return stringEncriptada;
 }
 
 function btnDesencriptar(){
@@ -38,17 +38,13 @@ function btnDesencriptar(){
 function desencriptar(stringDesencriptada) {
     let matrizCodigo = [["e", "enter"], ["i", "imes"], ["a", "ai"], ["o", "ober"], ["u", "ufat"]];
     stringDesencriptada = stringDesencriptada.toLowerCase();
-    // Validar que solo se utilicen letras minúsculas
-    if (!/^[a-z]+$/.test(stringDesencriptada)) {
-        return "Solo se permiten letras minúsculas sin caracteres especiales.";
-    }
+    let textoDesencriptado = stringDesencriptada; // Inicializa el texto desencriptado con el mismo valor que el texto encriptado
     for (let i = 0; i < matrizCodigo.length; i++) {
-        if (stringDesencriptada.includes(matrizCodigo[i][0])) {
-            stringDesencriptada = stringDesencriptada.replaceAll(matrizCodigo[i][1], matrizCodigo[i][0]);
-        }
+        textoDesencriptado = textoDesencriptado.replaceAll(matrizCodigo[i][1], matrizCodigo[i][0]);
     }
-    return stringDesencriptada;
+    return textoDesencriptado;
 }
+
 
 document.getElementById("btnCopiar").addEventListener("click", function() {
     var texto = document.querySelector(".mensaje");
